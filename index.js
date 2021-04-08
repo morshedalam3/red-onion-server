@@ -28,6 +28,13 @@ client.connect(err => {
     })
   })
 
+  app.get('/products', (req, res) => {
+    productCollection.find()
+    .toArray((err, items) => {
+        res.send(items)
+    })
+})
+
   app.get('/home/:id', (req, res) => {
     const id = ObjectID(req.params.id);
     collection.find({_id:id})
